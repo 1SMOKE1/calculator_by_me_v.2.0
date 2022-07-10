@@ -1,0 +1,85 @@
+@import "./reset";
+
+//COLORS
+
+$c1: #fff;
+$c2: #c4c4c4;
+$c3: #24a3ff;
+$c4: #e01f5cc4;
+$c5: #686887;
+$c6: #f5f5fa;
+$c7: #b3b3ba;
+$c8: #1c4280;
+$c9: #1e6180;
+$c10: #f48b30;
+$c11: #9e4dc3;
+$c12: #fd9339;
+$c13: #e2e2e4;
+$c14: #c71c36;
+$c15: #dcf3f9;
+$c16: #eaeaea;
+$c17: #282240;
+$c18: #1a2025;
+$c19: #000;
+$c20: #323264;
+$c21: #46466e;
+$c22: #e6e6f0;
+
+//classes for color and background
+
+@each $number,
+  $hex
+    in (
+      1: $c1,
+      2: $c2,
+      3: $c3,
+      4: $c4,
+      5: $c5,
+      6: $c6,
+      7: $c7,
+      8: $c8,
+      9: $c9,
+      10: $c10,
+      11: $c11,
+      12: $c12,
+      13: $c13,
+      14: $c14,
+      15: $c15,
+      16: $c16,
+      17: $c17,
+      18: $c18,
+      19: $c19,
+      20: $c20,
+      21: $c21,
+      22: $c22
+    )
+{
+  .c#{$number} {
+    color: $hex;
+  }
+  .bg#{$number} {
+    background-color: $hex;
+  }
+}
+
+// FONTS FONTS
+// FONTS FONTS
+// FONTS FONTS
+
+//FONT MIXIN
+
+//FONT MIXIN
+
+/*
+font height -x
+font-weight -y
+line-height (optional) -z
+@include font(x,y,z);
+*/
+
+@mixin font($fs, $lh: $fs, $fw: 400) {
+  font-size: #{$fs}px;
+  line-height: #{$lh}px;
+  font-family: "TT Norms";
+  font-weight: $fw;
+}

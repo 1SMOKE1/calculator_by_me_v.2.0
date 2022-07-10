@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Document</title>
+  <script src="calculator.js"></script>
+</head>
+<body class="bg13">
+  <div class="container">
+    <div class="calc__wrapper">
+      <div class="calc bg9">
+        <h1 class="calc__title c4">calculator</h1>
+        <div class="calc__interface" id="calculator">
+          <input 
+            type="tel"
+            data-output
+            class="calc__input"
+            />
+          <button data-action='MC' >MC</button>
+          <button data-action='MR' >MR</button>
+          <button data-action='M+' >M+</button>
+          <button data-action='M-' >M-</button>
+          <button data-action='MS' >MS</button>
+          <button data-digit='7' >7</button>
+          <button data-digit='8' >8</button>
+          <button data-digit='9' >9</button>
+          <button data-action='C' >C</button>
+          <button data-action='CE' >CE</button>
+          <button data-digit='4' >4</button>
+          <button data-digit='5' >5</button>
+          <button data-digit='6' >6</button>
+          <button data-action='+' >+</button>
+          <button data-action='-' >-</button>
+          <button data-digit='1' >1</button>
+          <button data-digit='2' >2</button>
+          <button data-digit='3' >3</button>
+          <button data-action='×' >×</button>
+          <button data-action='÷' >÷</button>
+          <button data-action='+/-' >+/-</button>
+          <button data-digit='0' >0</button>
+          <button data-digit='.' >.</button>
+          <button data-action='%' >%</button>
+          <button data-action='=' >=</button>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+            new Calculator("#calculator");
+        });
+  </script>
+</body>
+</html>

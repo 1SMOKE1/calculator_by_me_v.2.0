@@ -1,0 +1,70 @@
+@import './common.scss';
+
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: content-box;
+}
+
+.calc{
+  &__wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+  }
+  &{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid $c8;
+    border-radius: 20px; 
+    padding: 20px;
+    position: relative;
+  }
+  &__title{
+    text-align: center;
+    text-transform: uppercase;
+    @include font(30, 20, 700);
+    margin-bottom: 20px;
+  }
+  &__interface{
+    max-width: 500px;
+    display: grid;
+    grid-template-rows: repeat(6, auto);
+    grid-template-columns: repeat(5, 80px);
+    & button{
+      width: 80px;
+      height: 80px;
+      @include font(30,20,400);
+    }
+  }
+  &__input{
+    @include font(40,20,700);
+    height: 80px;
+    text-align: right;
+    padding-top: 50px;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+  &__memory{
+    position: absolute;
+    left: 22px;
+    width: 396px;
+    height: 40px;
+    border: none;
+    text-align: right;
+    &:disabled{
+      background-color: #fff;
+    }
+  }
+  
+  
+}
+
+
+
