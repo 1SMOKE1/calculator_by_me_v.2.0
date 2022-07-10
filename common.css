@@ -1,0 +1,240 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.c1 {
+  color: #fff;
+}
+
+.bg1 {
+  background-color: #fff;
+}
+
+.c2 {
+  color: #c4c4c4;
+}
+
+.bg2 {
+  background-color: #c4c4c4;
+}
+
+.c3 {
+  color: #24a3ff;
+}
+
+.bg3 {
+  background-color: #24a3ff;
+}
+
+.c4 {
+  color: #e01f5cc4;
+}
+
+.bg4 {
+  background-color: #e01f5cc4;
+}
+
+.c5 {
+  color: #686887;
+}
+
+.bg5 {
+  background-color: #686887;
+}
+
+.c6 {
+  color: #f5f5fa;
+}
+
+.bg6 {
+  background-color: #f5f5fa;
+}
+
+.c7 {
+  color: #b3b3ba;
+}
+
+.bg7 {
+  background-color: #b3b3ba;
+}
+
+.c8 {
+  color: #1c4280;
+}
+
+.bg8 {
+  background-color: #1c4280;
+}
+
+.c9 {
+  color: #1e6180;
+}
+
+.bg9 {
+  background-color: #1e6180;
+}
+
+.c10 {
+  color: #f48b30;
+}
+
+.bg10 {
+  background-color: #f48b30;
+}
+
+.c11 {
+  color: #9e4dc3;
+}
+
+.bg11 {
+  background-color: #9e4dc3;
+}
+
+.c12 {
+  color: #fd9339;
+}
+
+.bg12 {
+  background-color: #fd9339;
+}
+
+.c13 {
+  color: #e2e2e4;
+}
+
+.bg13 {
+  background-color: #e2e2e4;
+}
+
+.c14 {
+  color: #c71c36;
+}
+
+.bg14 {
+  background-color: #c71c36;
+}
+
+.c15 {
+  color: #dcf3f9;
+}
+
+.bg15 {
+  background-color: #dcf3f9;
+}
+
+.c16 {
+  color: #eaeaea;
+}
+
+.bg16 {
+  background-color: #eaeaea;
+}
+
+.c17 {
+  color: #282240;
+}
+
+.bg17 {
+  background-color: #282240;
+}
+
+.c18 {
+  color: #1a2025;
+}
+
+.bg18 {
+  background-color: #1a2025;
+}
+
+.c19 {
+  color: #000;
+}
+
+.bg19 {
+  background-color: #000;
+}
+
+.c20 {
+  color: #323264;
+}
+
+.bg20 {
+  background-color: #323264;
+}
+
+.c21 {
+  color: #46466e;
+}
+
+.bg21 {
+  background-color: #46466e;
+}
+
+.c22 {
+  color: #e6e6f0;
+}
+
+.bg22 {
+  background-color: #e6e6f0;
+}
+
+/*
+font height -x
+font-weight -y
+line-height (optional) -z
+@include font(x,y,z);
+*/
