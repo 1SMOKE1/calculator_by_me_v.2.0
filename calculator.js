@@ -1,5 +1,3 @@
-
-
 class Calculator{
   #num1 = 0; // текущее число/результат
   #num2 = 0; // второй аргумент последней выполненной операции
@@ -24,7 +22,7 @@ class Calculator{
     this.#root.querySelectorAll('[data-action]').forEach(element => {
         element.onclick = event => this.#action(event.target.dataset.action);
     });
-    this.#show(this.#res);
+    this.#show();
     
   }
   #clearAll(){// правильно
@@ -39,20 +37,29 @@ class Calculator{
     this.#counter = 0;
     this.#show(this.#res);
   }
-  #clearLast(){// правильно
-    this.#num1 = this.#num2
-    this.#num2 = 0;
-    this.#res = 0;
+  #clearLast(){
+    if(this.#res != 0){
+      this.#res = this.#num1;
+    } else if(this.#num2 == this.#res){
+      this.#res = 0;
+    }
     this.#isEq = false;
-    this.#state = 'n';
+    this.#state = 'o';
     this.#isFractional = false;
     this.#counter = 0;
-    this.#show(this.#res);
+  }
+  #actionClearLN(){
+    if(this.#num2 == 0){
+      this.#num1 = Math.floor(this.#num1 * 0.1)
+    } else {
+      this.#num1 = Math.floor(this.#num1 * 0.1)
+    }
+    this.#state = 'n';
   }
   #actionPlus() {// правильно
     switch (this.#state) { 
         case 'n':
-            if(this.#num1 == 0 && this.#num2 == 0){// 
+            if(this.#num1 == 0 && this.#num2 == 0  && this.#oper != ''){// 
               this.#minusOnStart = true;
               this.#oper = '';
               this.#state = 'n'
@@ -119,7 +126,7 @@ class Calculator{
   #actionMinus() {// правильно
     switch (this.#state) {
         case 'n':
-          if(this.#num1 == 0 && this.#num2 == 0){// 
+          if(this.#num1 == 0 && this.#num2 == 0 && this.#oper != ''){// 
             this.#minusOnStart = true;
             this.#oper = '';
             this.#state = 'n'
@@ -189,7 +196,7 @@ class Calculator{
   #actionMultiple() { // правильно 
     switch(this.#state){
       case 'n':
-        if(this.#num1 == 0 && this.#num2 == 0){// 
+        if(this.#num1 == 0 && this.#num2 == 0 && this.#oper != ''){// 
           this.#minusOnStart = true;
           this.#oper = '';
           this.#state = 'n'
@@ -267,7 +274,7 @@ class Calculator{
   #actionDivide() { // правильно 
     switch(this.#state){
       case 'n':
-        if(this.#num1 == 0 && this.#num2 == 0){// 
+        if(this.#num1 == 0 && this.#num2 == 0 && this.#oper != ''){// 
           this.#minusOnStart = true;
           this.#oper = '';
           this.#state = 'n'
@@ -351,7 +358,7 @@ class Calculator{
       } else {
         this.#num1 *= -1;
       }
-      this.#show(this.#num1)
+      this.#show()
     } 
     if(this.#num1 != 0 && this.#num2 != 0){
       if(this.#num1 > 0){
@@ -359,17 +366,34 @@ class Calculator{
       } else {
         this.#num1 *= -1;
       }
-      this.#show(this.#num1)
+      this.#show()
+    }
+    if(this.#res != 0 && this.#res != this.#num2){
+      if(this.#res > 0){
+        this.#res *= -1;
+      } else {
+        this.#res *= -1;
+      }
+      this.#show()
     }
     this.#state = 'n';
   }
   #actionPercent() {// правильно
-    if(this.#num1 != 0 && this.#num2 != 0){
+    if(this.#num1 != 0 && this.#num2 == 0 && this.#oper == '+' || this.#oper == '-'){
+      console.log('working')
+      this.#num2 = this.#num1;
+      this.#num1 = this.#num2 * (this.#num2 / 100) 
+      this.#show()
+    } else if((this.#num1 != 0 && this.#num2 == 0 && this.#oper == '×' || this.#oper == '÷')){
+      this.#num2 = this.#num1;
       this.#num1 *= 0.01;
-    } else {
-      this.#clearAll()
+      this.#show()
     }
-    this.#show(this.#num1)
+      else {
+      this.#num1 *= 0.01;
+      this.#show()
+    }
+    
   }
   #actionMemorySave(){
     if(this.#res == this.#num1 || this.#res == 0){// для 1-го числа
@@ -383,6 +407,8 @@ class Calculator{
            && this.#res != this.#num2){ 
       this.#num3 = this.#res;
     }
+    this.#state = 'o'
+    this.#num1 = 0;
   }
   #actionMemoryRead(){
     if(this.#num1 == 0 && this.#num2 == 0){
@@ -390,7 +416,7 @@ class Calculator{
     } else {
       this.#num1 = this.#num3;
     }
-    this.#show(this.#num3);
+    this.#show();
   }
   #actionMemoryClear(){
     this.#num3 = 0;
@@ -407,6 +433,8 @@ class Calculator{
            && this.#res != this.#num2){ 
       this.#num3 += this.#res;
     }
+    this.#state = 'o'
+    this.#num1 = 0;
   }
   #actionMemoryMinus(){
     if(this.#res == this.#num1 || this.#res == 0){// для 1-го числа
@@ -420,6 +448,8 @@ class Calculator{
            && this.#res != this.#num2){ 
       this.#num3 -= this.#res;
     }
+    this.#state = 'o'
+    this.#num1 = 0;
   }
   #actionEq() { 
     this.#isEq = true;
@@ -439,9 +469,9 @@ class Calculator{
           break;
     }
     this.#isEq = false;
-    this.#show(this.#res);
+    this.#show();
   }
-  #action(oper){
+  #action(oper){debugger
     switch(oper){
       case 'C':
         this.#clearAll()
@@ -470,6 +500,9 @@ class Calculator{
       case 'M-':
         this.#actionMemoryMinus()
         break;
+      case 'LN':
+        this.#actionClearLN()
+        break
       case '+':
         this.#actionPlus()
         break;
@@ -487,14 +520,17 @@ class Calculator{
         break;
     }
     console.log(`digit bl: n1 = ${this.#num1},  n2 = ${this.#num2}, n3 = ${this.#num3}, res = ${this.#res}`)
-    if(oper == '+/-' && this.#num2 == 0){
-      this.#show(this.#num1)
-    } else if(oper == '+/-' && this.#num2 == 0){
-      this.#show(this.#num1)
-    } else
-    if(this.#num1 != 0 && this.#num2 != 0 && oper != '+/-'){
-      this.#show(this.#res);
-    }
+    // if(oper == '+/-' && this.#num2 == 0){
+    //   this.#show()
+    // } else if(oper == '+/-' && this.#num2 == 0){
+    //   this.#show()
+    // } 
+    // else if(this.#oper == '%'){
+    //   this.#show();
+    // } else if(this.#res != 0 ){
+    //   this.#show()
+    // }
+    this.#show()
     this.#isFractional = false;
     this.#counter = 0;
   }
@@ -509,7 +545,7 @@ class Calculator{
         if(this.#minusOnStart){
           if(this.#isFractional){
             this.#counter++
-            this.#num1 = this.#num1 + ((+digit).toFixed(this.#counter) * Math.pow(0.1, this.#counter));
+            this.#num1 = this.#num1 + ((+digit).toFixed(this.#counter + 1) * Math.pow(0.1, this.#counter));
           } else {
             this.#num1 = this.#num1 * 10 + +digit;
           }
@@ -517,7 +553,7 @@ class Calculator{
         } else {
           if(this.#isFractional){
             this.#counter++
-            this.#num1 = this.#num1 + ((+digit).toFixed(this.#counter) * Math.pow(0.1, this.#counter));
+            this.#num1 = this.#num1 + ((+digit).toFixed(this.#counter + 1) * Math.pow(0.1, this.#counter));
           } else {
             this.#num1 = this.#num1 * 10 + +digit;
           }
@@ -532,10 +568,17 @@ class Calculator{
     console.log(`digit bl: n1 = ${this.#num1},  n2 = ${this.#num2}, n3 = ${this.#num3}, res = ${this.#res}`)
     this.#state = 'n';
     this.#minusOnStart = false;
-    this.#show(this.#num1)
+    this.#show()
   }
-  #show(val){
-    this.#output.value = val;
+  #show(){
+    switch(this.#state){
+      case 'n':
+        this.#output.value = this.#num1;
+        break;
+      case 'o':
+        this.#output.value = this.#res;
+        break;
+    }
   }
 }
 
